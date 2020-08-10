@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-primary">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">Edit Question</h4>
+            </div>
+            <div class="card-body">
+                <form id="addPaper"  action="/question/update" method="POST">
+                    <div class="form-body">
+                        <h3 class="card-title m-t-15">Question Info</h3>
+                        <hr>
+                        <!--row-->
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Question</label>
+                                    <textarea name="title" id="title" cols="50" rows="4"><%= question.title %></textarea>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Paper</label>
+                                    <select name="paper_id" id="paper_id" class="form-control form-control-danger">
+                                            <option value="">-Select Paper-</option>
+                                        <% for ( var i = 0; i < papers.length; i++ ){
+                                            var selected = ( question.paper_id == papers[i].id ) ? "selected" : "";    
+                                        %>
+                                            <option value="<%=papers[i].id %>" <%=selected %>><%=papers[i].title %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                         <!--row-->
+                         <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Option 1</label>
+                                    <input type="text" name="option1" id="option1" class="form-control form-control-danger" placeholder="Option 1" value="<%= question.option1 %>"/>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Option 2</label>
+                                    <input type="text" name="option2" id="option2" class="form-control form-control-danger" placeholder="Option 2" value="<%= question.option2 %>"/>
+                                    
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <!--row-->
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Option 3</label>
+                                    <input type="text" name="option3" id="option3" class="form-control form-control-danger" placeholder="Option 3" value="<%= question.option3 %>"/>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Option 4</label>
+                                    <input type="text" name="option4" id="option4" class="form-control form-control-danger" placeholder="Option 4" value="<%= question.option4 %>"/>
+                                    
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+
+                         <!--row-->
+                         <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Answer</label>
+                                    <input type="text" name="answer" id="answer" class="form-control form-control-danger" placeholder="Answer" value="<%= question.answer %>"/>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Mark</label>
+                                    <input type="text" name="mark" id="mark" class="form-control form-control-danger" placeholder="Mark" value="<%= question.mark %>"/>
+                                    
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+
+                        
+                  
+                    </div>
+                    <div class="form-actions">
+                        <input type="hidden" name="id"  value="<%= question.id %>"/>
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Update</button>
+                        <a href="/questions"><button type="button" class="btn btn-inverse">Cancel</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

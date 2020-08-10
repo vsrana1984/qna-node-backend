@@ -1,0 +1,58 @@
+<div class="unix-login">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="login-content card">
+                    <div class="login-form">
+                        <h4>Register</h4>
+                        <% if(message.length > 0) { %>
+                            <div class="alert alert-danger"><%= message %></div> 
+                        <% } %>
+                        <form action="/signup" method="POST">
+                            <div class="form-group">
+                                <label for="user">User Name</label>
+                                <input type="text" name="username" class="form-control" placeholder="User Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Confirm Password</label>
+                                <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" id="confirm_password" required>
+                                <span style="color:RED;" id="pass_error"></span>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                <input type="checkbox"> Agree the terms and policy
+                            </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                            <div class="register-link m-t-15 text-center">
+                                <input type="hidden" name="type" value="admin">
+                                <p>Already have account ? <a href="/login"> Sign in</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#confirm_password').blur(function(){
+            if($('#password').val() != $(this).val()){
+                $('#pass_error').html("Error: Please check that you've entered and confirmed your password!");
+                $(this).val('');
+            }else{
+                $('#pass_error').html("");
+            }
+
+        });
+    });
+</script>

@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-outline-primary">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">Add User</h4>
+            </div>
+            <div class="card-body">
+                <form id="addUser"  action="/user/add" method="POST">
+                    <div class="form-body">
+                        <h3 class="card-title m-t-15">User Info</h3>
+                        <hr>
+                         <!--row-->
+                         <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">First Name</label>
+                                    <input type="text" name="firstname" id="firstname" class="form-control form-control-danger" placeholder="First Name" required/>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Last Name</label>
+                                    <input type="text" name="lastname" id="lastname" class="form-control form-control-danger" placeholder="Last Name" required/>
+                                    
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                         <!--row-->
+                         <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Username</label>
+                                    <input type="text" name="username" id="username" class="form-control form-control-danger" placeholder="User Name" required/>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control form-control-danger" placeholder="Email" required/>
+                                    
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <!--row-->
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control form-control-danger" placeholder="Password" required/>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">
+                                    <label class="control-label">Confirm Password</label>
+                                    <input type="password" name="confirm_password" id="confirm_password" class="form-control form-control-danger" placeholder="Confirm Password" required/>
+                                    <span style="color:RED;" id="pass_error"></span>
+                                </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <!--row-->
+                        <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Type</label>
+                                    <select name="type" class="form-control form-control-danger">
+                                        <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group has-danger">&nbsp; </div>
+                            </div>
+                            <!--/span-->
+                        </div>
+                        <!--/row-->
+ 
+                  
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                        <a href="/users"><button type="button" class="btn btn-inverse">Cancel</button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#confirm_password').blur(function(){
+            if($('#password').val() != $(this).val()){
+                $('#pass_error').html("Error: Please check that you've entered and confirmed your password!");
+                $(this).val('');
+            }else{
+                $('#pass_error').html("");
+            }
+
+        });
+    });
+</script>

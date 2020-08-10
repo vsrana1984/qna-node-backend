@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Questions List</h4>
+                <span style="float: right;"><a href="/question/add"><button type="button" class="btn btn-success">Add New</button></a></span>
+                <div class="table-responsive m-t-40">                    
+                    <table id="myTable" class="table table-bordered table-striped users-table">
+                        <thead>
+                            <tr>
+                              <th>Question</th>
+                              <th>Paper</th>
+                              <th>Option1</th>
+                              <th>Option2</th>
+                              <th>Option3</th>
+                              <th>Option4</th>
+                              <th>Created</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                        <% for(var i=0; i < questions.length; i++) { %>
+                            <tr>
+                            <th><%= questions[i].title %></th>
+                            <th><%= questions[i].Paper.title %></th>
+                            <th><%= questions[i].option1 %></th>
+                            <th><%= questions[i].option2 %></th>
+                            <th><%= questions[i].option3 %></th>
+                            <th><%= questions[i].option4 %></th>
+                            <th><%= questions[i].createdAt.toISOString().
+                              replace(/T/, ' ').      // replace T with a space
+                              replace(/\..+/, '') %></th>
+                            <th><a href="/question/edit/<%= questions[i].id %>">Edit</a></th>
+                            </tr>
+                        <% } %>
+                          </tbody>
+                    </table>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        <%if (pages > 1) { %>
+            <nav style="float: right;">
+            <ul class="pagination pagination-gap">
+              <li class="disabled page-item">
+                <a class="page-link" href="?page=<%= currentPage - 1%>" aria-label="Previous">
+                  <span aria-hidden="true">«</span>
+                </a>
+              </li>
+              <% for(var i=1; i <= pages; i++) { %>
+              <li class="<%= (currentPage == i) ? 'active' : '' %> page-item"><a class="page-link" href="<%= (currentPage == i) ? 'javascript:void(0)' : '?page='+i %>"><%= i%> </a></li>
+              <% } %>
+              <li class="page-item">
+                <a class="page-link" href="?page=<%= currentPage + 1%>" aria-label="Next">
+                  <span aria-hidden="true">»</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        <% } %>
+  </div>
+</div>
+
